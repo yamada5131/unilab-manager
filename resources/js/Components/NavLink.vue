@@ -14,7 +14,7 @@ const props = defineProps({
 
 const classes = computed(() => {
     return props.active
-        ? "group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 !text-blue-700 hover:!text-blue-700 dark:!text-blue-500 dark:hover:!text-blue-500 font-bold"
+        ? "group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 !text-blue-700 hover:!text-blue-700 dark:!text-blue-500 dark:hover:!text-blue-500 font-semibold"
         : "group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700";
 });
 
@@ -25,7 +25,7 @@ const dynamicPadding = computed(() => {
 </script>
 
 <template>
-    <Link :href="href" :class="[classes, dynamicPadding]">
+    <Link :class="[classes, dynamicPadding]" :href="href">
         <font-awesome-icon
             v-if="icon"
             :icon="icon"

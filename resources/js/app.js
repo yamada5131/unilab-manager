@@ -15,12 +15,20 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { faBars, faChartLine, faFlag, faGear } from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faChartLine,
+    faComputer,
+    faFlag,
+    faGear,
+} from "@fortawesome/free-solid-svg-icons";
+import { createPinia } from "pinia";
 
 /* add icons to the library */
-library.add(faBars, faChartLine, faGear, faFlag);
+library.add(faBars, faChartLine, faGear, faFlag, faComputer);
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+const pinia = createPinia();
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -33,6 +41,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(pinia)
             .component("font-awesome-icon", FontAwesomeIcon)
             .mount(el);
     },

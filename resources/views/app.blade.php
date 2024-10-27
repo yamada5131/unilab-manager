@@ -14,10 +14,10 @@
     <!-- Scripts -->
     <script>
         // Kiểm tra chế độ theme từ localStorage và đặt class dark nếu cần
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+        if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
         } else {
-            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.remove("dark");
         }
     </script>
     @routes
@@ -25,8 +25,8 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased">
-    @inertia
+<body class="antialiased bg-gray-50 dark:bg-gray-900">
+@inertia
 </body>
 
 </html>

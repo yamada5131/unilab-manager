@@ -12,12 +12,10 @@ import AppLayout from "@/Layouts/AppLayout.vue";
         <!--         Dashboard -->
         <!--     </h2> -->
         <!-- </template> -->
-        <div class="px-4 pt-6 pb-60">
-            <div
-                class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg"
-            >
-                <Welcome />
-            </div>
+        <div
+            class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg"
+        >
+            <Welcome />
         </div>
     </AppLayout>
 </template>
