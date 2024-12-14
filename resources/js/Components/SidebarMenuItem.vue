@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import NavLink from "@/Components/NavLink.vue";
 import { computed } from "vue";
 
@@ -20,7 +20,7 @@ const props = defineProps({
 const emit = defineEmits(["toggle"]);
 
 const paddingStyle = computed(() => {
-    let level = props.level;
+    const level = props.level;
     return level > 1 ? { paddingLeft: `${level * 20}px` } : {};
 });
 </script>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import Computer from "@/Components/Computer.vue";
 
@@ -10,19 +10,19 @@ const props = defineProps({
 });
 
 // define seat arrays using refs
-const leftseats = computed(() => props.room.computers.slice(0, 24));
-const rightseats = computed(() => props.room.computers.slice(24, 48));
+const leftseats = computed(() => props.room.computers?.slice(0, 24) || []);
+const rightseats = computed(() => props.room.computers?.slice(24, 48) || []);
 </script>
 
 <template>
     <div class="flex">
-        <div class="grid basis-3/4 grid-cols-2 place-items-center p-10">
+        <div class="grid basis-3/4 grid-cols-2 place-items-center p-4 sm:p-6">
             <!-- row 1 -->
             <div class="grid grid-cols-4 grid-rows-6 place-items-center gap-4">
                 <Computer
                     v-for="computer in leftseats"
                     :key="computer.id"
-                    :network_status="computer.network_status"
+                    :status="computer.status ? computer.status.status : 'N/A'"
                     :number="computer.id"
                 />
             </div>
@@ -32,7 +32,7 @@ const rightseats = computed(() => props.room.computers.slice(24, 48));
                 <Computer
                     v-for="computer in rightseats"
                     :key="computer.id"
-                    :network_status="computer.network_status"
+                    :status="computer.status ? computer.status.status : 'N/A'"
                     :number="computer.id"
                 />
             </div>

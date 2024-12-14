@@ -27,10 +27,9 @@ class ComputerFactory extends Factory
                 'RAM' => $this->faker->randomElement(['8GB', '16GB', '32GB']),
                 'Storage' => $this->faker->randomElement(['256GB SSD', '512GB SSD', '1TB HDD']),
             ]),
-            'network_status' => $this->faker->randomElement(['Connected', 'Disconnected']),
             'mac_address' => $this->faker->macAddress,
             'operating_system' => $this->faker->randomElement(['Windows 10', 'Ubuntu 20.04', 'macOS']),
-            'installed_software' => json_encode($this->generateSoftwareList()),
+            'installed_software' => json_encode([]),
         ];
     }
 

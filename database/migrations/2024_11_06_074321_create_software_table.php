@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('computers', function (Blueprint $table) {
+        Schema::create('software', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
-            $table->json('hardware_specifications')->nullable(); // JSON
-            $table->string('mac_address');
-            $table->string('operating_system');
-            $table->json('installed_software')->nullable(); // JSON
+            $table->string('version');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('computers');
+        Schema::dropIfExists('software');
     }
 };

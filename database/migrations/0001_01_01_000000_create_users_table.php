@@ -20,8 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->string('role');
-            $table->boolean('can_manage_all_rooms')->default(false);
+            /*$table->string('role');*/
+            /*$table->boolean('can_manage_all_rooms')->default(false);*/
             $table->timestamps();
         });
 

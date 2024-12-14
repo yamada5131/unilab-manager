@@ -35,7 +35,7 @@ const isActive = (item) => {
         </li>
         <li v-for="item in menuItems" :key="item.name">
             <SidebarMenuItem
-                :isActive="isActive(item)"
+                :is-active="isActive(item)"
                 :item="item"
                 :level="level"
                 @toggle="toggle"
@@ -45,7 +45,7 @@ const isActive = (item) => {
                     item.isOpen && item.children && item.children.length > 0
                 "
             >
-                <SidebarMenu :level="level + 1" :menuItems="item.children" />
+                <SidebarMenu :level="level + 1" :menu-items="item.children" />
             </ul>
         </li>
     </ul>

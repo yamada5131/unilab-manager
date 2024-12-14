@@ -21,11 +21,21 @@ import {
     faComputer,
     faFlag,
     faGear,
+    faGauge,
+    faDesktop,
 } from "@fortawesome/free-solid-svg-icons";
 import { createPinia } from "pinia";
 
 /* add icons to the library */
-library.add(faBars, faChartLine, faGear, faFlag, faComputer);
+library.add(
+    faBars,
+    faChartLine,
+    faGear,
+    faFlag,
+    faComputer,
+    faGauge,
+    faDesktop,
+);
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 const pinia = createPinia();

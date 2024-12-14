@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { Head } from "@inertiajs/vue3";
 import Banner from "@/Components/Banner.vue";
@@ -8,17 +8,15 @@ import SearchBar from "@/Components/SearchBar.vue";
 import Sidebar from "@/Components/Sidebar.vue";
 
 defineProps({
-    title: String,
+    title: {
+        type: String,
+        required: true,
+    },
 });
-// Biến trạng thái dark mode
+
 const isDarkMode = ref(false);
 const sidebarOpen = ref(false);
 
-const toggleSideBar = () => {
-    sidebarOpen.value = !sidebarOpen.value;
-};
-
-// Hàm để kiểm tra và cập nhật trạng thái dark mode khi tải trang
 const checkTheme = () => {
     isDarkMode.value =
         localStorage.getItem("color-theme") === "dark" ||
@@ -26,14 +24,12 @@ const checkTheme = () => {
             window.matchMedia("(prefers-color-scheme: dark)").matches);
 };
 
-// Hàm để bật/tắt dark mode
 const toggleTheme = () => {
     isDarkMode.value = !isDarkMode.value;
     document.documentElement.classList.toggle("dark", isDarkMode.value);
     localStorage.setItem("color-theme", isDarkMode.value ? "dark" : "light");
 };
 
-// Chạy hàm kiểm tra theme khi component được mount
 onMounted(() => {
     checkTheme();
 });
@@ -125,14 +121,7 @@ onMounted(() => {
             </template>
         </NavBar>
         <div class="flex overflow-hidden bg-gray-50 pt-16 dark:bg-gray-900">
-            <Sidebar :sidebarOpen="sidebarOpen" />
-            <!-- Page Heading -->
-            <div
-                v-if="sidebarOpen"
-                id="sidebarBackdrop"
-                class="fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90"
-                @click="sidebarOpen = false"
-            ></div>
+            <Sidebar :sidebar-open="sidebarOpen" />
             <header
                 v-if="$slots.header"
                 class="bg-white shadow dark:bg-gray-800"
@@ -146,7 +135,7 @@ onMounted(() => {
             <div
                 class="relative h-full w-full overflow-y-auto bg-gray-50 dark:bg-gray-900 lg:ml-64"
             >
-                <main class="h-auto px-4 pt-5">
+                <main>
                     <slot />
                 </main>
                 <Footer />

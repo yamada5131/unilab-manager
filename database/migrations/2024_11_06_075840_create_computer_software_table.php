@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('computer_software', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->integer('capacity');
-            $table->boolean('is_available')->default(true); // Trạng thái phòng (mặc định là có sẵn)
+            $table->foreignId('computer_id')->constrained('computers')->onDelete('cascade');
+            $table->foreignId('software_id')->constrained('software')->onDelete('cascade');
+            $table->timestamp('installed_at')->nullable();
+            $table->timestamp('removed_at')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('computer_software');
     }
 };

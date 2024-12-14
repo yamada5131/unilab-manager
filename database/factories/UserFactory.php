@@ -30,8 +30,8 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'role' => $this->faker->randomElement(['user', 'manager', 'admin']),
-            'can_manage_all_rooms' => $this->faker->boolean(20), // 20% chance
+            /*'role' => $this->faker->randomElement(['user', 'manager', 'admin']),*/
+            /*'can_manage_all_rooms' => $this->faker->boolean(20), // 20% chance*/
             'password' => static::$password ??= Hash::make('password'),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,

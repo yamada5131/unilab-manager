@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Dropdown from "@/Components/Dropdown.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
@@ -28,8 +28,9 @@ const logout = () => {
                         <!--                        />-->
                         <span
                             class="self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl"
-                            >Unilab Manager</span
                         >
+                            Unilab Manager
+                        </span>
                     </a>
                     <slot name="search-bar" />
                 </div>

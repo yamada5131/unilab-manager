@@ -19,6 +19,7 @@ class RoomFactory extends Factory
         return [
             'name' => $this->faker->word,
             'capacity' => 48, // Fixed capacity of 48 for each room
+            'is_available' => true, // Default to available
         ];
     }
 }

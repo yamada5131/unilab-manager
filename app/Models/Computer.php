@@ -10,15 +10,7 @@ class Computer extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'room_id',
-        'hardware_specifications',
-        'network_status',
-        'mac_address',
-        'operating_system',
-        'installed_software',
-    ];
+    protected $fillable = ['name', 'room_id', 'hardware_specifications', 'mac_address', 'operating_system', 'installed_software'];
 
     protected $casts = [
         'hardware_specifications' => 'json',
@@ -28,5 +20,15 @@ class Computer extends Model
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);
+    }
+
+    public function software()
+    {
+        return $this->belongsToMany(Software::class, 'computer_software')->withPivot('installed_at', 'removed_at');
+    }
+
+    public function status()
+    {
+        return $this->hasOne(ComputerStatus::class);
     }
 }

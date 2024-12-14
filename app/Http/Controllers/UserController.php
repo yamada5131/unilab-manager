@@ -18,8 +18,6 @@ class UserController extends Controller
             ],
         ];
 
-        return Inertia::render('User/Index', [
-
-        ]);
+        return Inertia::render('User/Index', []);
     }
 }
